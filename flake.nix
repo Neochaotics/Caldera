@@ -203,14 +203,6 @@
               apiEnabled = config.caldera.api.enable || config.caldera.dock.enable;
             in
             {
-              users.users."caldera-rest-api" = {
-                isSystemUser = true;
-                createHome = false;
-                shell = pkgs.bash;
-                group = "caldera-rest-api";
-              };
-              users.groups."caldera-rest-api" = { };
-
               systemd.user.services.caldera-rest-api = lib.mkIf apiEnabled {
                 Unit = {
                   Description = "Caldera REST API service";
